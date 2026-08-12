@@ -1,0 +1,16 @@
+Jogo: God of War Ragnarok
+
+caracteristias:
+armamento
+velocidade
+pai
+
+comportamentos:
+atacar
+correr
+defender
+
+objetos:
+atreus
+pai de todos
+kratos
