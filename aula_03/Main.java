@@ -17,15 +17,19 @@ public class Main {
         Arma cajado = new Arma("Cajado de Ossos", 30);
         Arma pa = new Arma("Pá dos Mortos", 10);
 
+        Armadura peitoral = new Armadura("Peitoral de Titânio", 50);
+
 
         espada.exibirStatus();
         machado.exibirStatus();
         cajado.exibirStatus();
         pa.exibirStatus();
 
-        guerreiro.equipar(espada);
+        guerreiro.equiparArma(espada);
+        guerreiro.equiparArmadura(peitoral);
+        
 
-        coveiro.equipar(pa);
+        coveiro.equiparArma(pa);
 
         guerreiro.atacar(goblin, true);
     }

@@ -1,16 +1,19 @@
 package aula_03;
 
 public class Personagem {
-    String nome;
-    int vida;
-    int forca;
-    int nivel;
+    private String nome;
+    private int vida;
+    private int vidaMaxima;
+    private int forca;
+    private int nivel;
 
-    Arma arma;
+    private Arma arma;
+    private Armadura armadura;
 
-    Personagem(String nome, int vida, int forca, int nivel) {
+    Personagem(String nome, int vidaMaxima, int forca, int nivel) {
         this.nome = nome;
-        this.vida = vida;
+        this.vidaMaxima = vidaMaxima;
+        this.vida = vidaMaxima;
         this.forca = forca;
         this.nivel = nivel;
     }
@@ -20,11 +23,17 @@ public class Personagem {
         System.out.println("Vida " + vida);
         System.out.println("Força " + forca);
         System.out.println("Nivel " + nivel);
+        System.out.println("Vida Maxima " + vidaMaxima);
     }
 
-    void equipar(Arma novaArma) {
+    void equiparArma(Arma novaArma) {
         arma = novaArma;
         System.out.println(nome + " Equipou: " + arma.nome);
+    }
+
+    void equiparArmadura(Armadura novaArmadura) {
+        armadura = novaArmadura;
+        System.out.println(nome + " Equipou: " + armadura.nome);
     }
 
     void atacar(Personagem alvo, boolean defender) {
@@ -32,11 +41,12 @@ public class Personagem {
         if (arma != null) {
         danoTotal += arma.dano;
         }
-        alvo.vida -= danoTotal;
+        
 
         if (defender == true) {
             danoTotal = danoTotal / 2;
         }
+    
 
         alvo.receberDano(danoTotal);
 
@@ -46,13 +56,25 @@ public class Personagem {
     }
 
     void receberDano(int dano) {
-        vida -= dano;
+        int defesa = 0;
+
+        if (armadura != null) {
+          defesa = armadura.getDefesa();
+        }
+
+        vida = dano - defesa;
+
+        if (vida < 0) {
+        vida = 0;
+    }
+        
         if (!estavivo()) {
             System.out.println(nome + " foi derrotado");
         }
         System.out.println(nome + " recebeu " + dano + " de dano.");
         System.out.println("Vida restante: " + vida);
     }
+
 
     void cura(int cura) {
         vida = vida + cura;
@@ -69,6 +91,8 @@ public class Personagem {
     boolean estavivo() {
         return vida > 0;
     }
+
+    
 
     
 }
