@@ -10,4 +10,10 @@ public class Personagem {
     public String getNome() {
         return nome;
     }
+
+    public abstract class Personagem{
+        private final String nome;
+        private Personagem(String nome);
+    }
+    
 }

@@ -5,6 +5,7 @@ public class Main {
 
         Mago mago = new Mago("Merlin");
         Guerreiro guerreiro = new Guerreiro("Arthur");
+        Arqueiro arqueiro = new Arqueiro("Robin");
         mago.atacar();
         guerreiro.atacar();
 
